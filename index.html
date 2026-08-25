@@ -1,118 +1,488 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trail des Zikos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>Trail des Zikos — Première édition</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0d0d0d;
-            color: white;
-            text-align: center;
-        }
+<style>
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            background:
-                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)),
-                linear-gradient(135deg, #171717, #4b0000);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .logo {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
+:root {
+    --red: #a94445;
+    --red-dark: #742d2f;
+    --black: #080808;
+    --white: #ffffff;
+    --cream: #f4eee8;
+}
 
-        .edition {
-            font-size: 22px;
-            color: #e63939;
-            font-weight: bold;
-            margin-bottom: 35px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .date {
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--black);
+    color: var(--white);
+}
 
-        .location {
-            font-size: 18px;
-            color: #cccccc;
-            margin-bottom: 45px;
-        }
+/* =========================
+   HEADER
+========================= */
 
-        .button {
-            display: inline-block;
-            background: #d71920;
-            color: white;
-            text-decoration: none;
-            padding: 16px 38px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: center;
+}
 
-        .button:hover {
-            background: #f02a32;
-        }
+header img {
+    width: 150px;
+    max-width: 45vw;
+    border-radius: 4px;
+}
 
-        .intro {
-            margin-top: 35px;
-            max-width: 500px;
-            line-height: 1.6;
-            color: #dddddd;
-        }
-    </style>
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.78)
+        ),
+        url("logo-trail.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    padding: 40px 20px 70px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.edition {
+    font-size: 18px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 12vw, 100px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.date {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.location {
+    font-size: 18px;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 17px 38px;
+    border-radius: 3px;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: white;
+    color: var(--black);
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    background: var(--cream);
+    color: var(--black);
+    padding: 75px 25px;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 38px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.intro p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* =========================
+   COURSES
+========================= */
+
+.courses {
+    padding: 80px 20px;
+    background: var(--black);
+    text-align: center;
+}
+
+.section-title {
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+}
+
+.course-container {
+    max-width: 1000px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.course {
+    border: 2px solid #222;
+    padding: 40px 25px;
+    background: #111;
+
+    position: relative;
+}
+
+.course h3 {
+    font-size: 42px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.course .distance {
+    font-size: 25px;
+    color: var(--red);
+    font-weight: bold;
+}
+
+.course .price {
+    font-size: 30px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.course p {
+    color: #bbb;
+    margin-top: 15px;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+.experience {
+    background: var(--red);
+    padding: 80px 25px;
+    text-align: center;
+}
+
+.experience h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.experience p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+/* =========================
+   INFOS
+========================= */
+
+.infos {
+    background: var(--cream);
+    color: var(--black);
+
+    padding: 75px 25px;
+    text-align: center;
+}
+
+.info-grid {
+    max-width: 900px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info {
+    padding: 25px;
+}
+
+.info strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #050505;
+    text-align: center;
+    padding: 40px 20px;
+
+    color: #999;
+}
+
+footer strong {
+    color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <section class="hero">
+<header>
 
-        <div class="logo">
-            Trail des Zikos
-        </div>
+    <img src="logo-trail.jpg" alt="Trail des Zikos">
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
 
         <div class="edition">
             PREMIÈRE ÉDITION
         </div>
+
+        <h1>
+            TRAIL<br>
+            <span>DES ZIKOS</span>
+        </h1>
 
         <div class="date">
             11 AVRIL 2027
         </div>
 
         <div class="location">
-            Airaines — Dreuil-Hamel
+            📍 Airaines — Dreuil-Hamel
         </div>
 
-        <a href="#" class="button">
-            S'inscrire
+        <a href="#courses" class="button">
+            DÉCOUVRIR LES COURSES
         </a>
 
-        <p class="intro">
-            Deux parcours, une ambiance musicale et un village
-            pour partager une belle journée autour du trail.
-        </p>
+    </div>
 
-    </section>
+</section>
+
+
+<section class="intro">
+
+    <h2>
+        Un trail pas comme les autres
+    </h2>
+
+    <p>
+        Le Trail des Zikos vous invite à une journée sportive,
+        conviviale et musicale au cœur de notre territoire.
+        Des chemins, du dénivelé, de la musique et surtout
+        une belle ambiance à partager entre coureurs,
+        bénévoles et spectateurs.
+    </p>
+
+</section>
+
+
+<section class="courses" id="courses">
+
+    <h2 class="section-title">
+        Les courses
+    </h2>
+
+    <div class="course-container">
+
+        <div class="course">
+
+            <h3>
+                Allegro
+            </h3>
+
+            <div class="distance">
+                20 KM
+            </div>
+
+            <div class="price">
+                15 €
+            </div>
+
+            <p>
+                Pour celles et ceux qui veulent aller
+                chercher le rythme.
+            </p>
+
+        </div>
+
+
+        <div class="course">
+
+            <h3>
+                Adagio
+            </h3>
+
+            <div class="distance">
+                12 KM
+            </div>
+
+            <div class="price">
+                10 €
+            </div>
+
+            <p>
+                Un parcours accessible pour profiter
+                pleinement de l'expérience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="experience">
+
+    <h2>
+        Trail + musique
+    </h2>
+
+    <p>
+        Parce qu'un Trail des Zikos ne pouvait pas être
+        une course comme les autres.
+        Retrouvez également notre village,
+        nos animations, nos partenaires,
+        nos producteurs et toute l'ambiance
+        musicale qui accompagne cette première édition.
+    </p>
+
+</section>
+
+
+<section class="infos">
+
+    <h2 class="section-title">
+        Infos pratiques
+    </h2>
+
+    <div class="info-grid">
+
+        <div class="info">
+            <strong>📅 DATE</strong>
+            11 avril 2027
+        </div>
+
+        <div class="info">
+            <strong>📍 DÉPART</strong>
+            Airaines / Dreuil-Hamel
+        </div>
+
+        <div class="info">
+            <strong>🎵 ORGANISATION</strong>
+            Batterie Fanfare d'Airaines
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <strong>
+        TRAIL DES ZIKOS
+    </strong>
+
+    <br><br>
+
+    Première édition — 11 avril 2027
+
+</footer>
 
 </body>
 </html>
